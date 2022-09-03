@@ -24,8 +24,28 @@ class Commands:
             result = ((self.entryFrom / 10)/100)/1000
         return result
 
+    def __centimeter(self):
+        result = 0
+        if self.listBoxTo == 'MilliMeter':
+            result = self.entryFrom * 10
+        elif self.listBoxTo == 'CentiMeter':
+            result = self.entryFrom
+        elif self.listBoxTo == 'Inch':
+            result = self.entryFrom / 2.54
+        elif self.listBoxTo == 'Feet':
+            result = self.entryFrom / 30.48
+        elif self.listBoxTo == 'Yard':
+            result = self.entryFrom / 91.44
+        elif self.listBoxTo == 'Meter':
+            result = self.entryFrom / 100
+        elif self.listBoxTo == 'Mile':
+            result = self.entryFrom / 160934.4
+        elif self.listBoxTo == 'KiloMeter':
+            result = self.entryFrom/100000
+        return result
+
     def units(self):
         if self.listBoxFrom == 'MilliMeter':
             return self.__millimeter()
-    # if __name__ == '__main__':
-    #     __units()
+        elif self.listBoxFrom == 'CentiMeter':
+            return self.__centimeter()

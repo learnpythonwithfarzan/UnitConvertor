@@ -64,7 +64,26 @@ class Commands:
             result = self.entryFrom / 39370.078740157
         elif self.listBoxTo == 'Mile':
             result = self.entryFrom / 63360
+        return result
 
+    def __feet(self):
+        result = 0
+        if self.listBoxTo == 'MilliMeter':
+            result = self.entryFrom * 304.8
+        elif self.listBoxTo == 'CentiMeter':
+            result = self.entryFrom * 30.48
+        elif self.listBoxTo == 'Inch':
+            result = self.entryFrom * 12
+        elif self.listBoxTo == 'Feet':
+            result = self.entryFrom
+        elif self.listBoxTo == 'Yard':
+            result = self.entryFrom / 3
+        elif self.listBoxTo == 'Meter':
+            result = self.entryFrom / 3.280839895
+        elif self.listBoxTo == 'KiloMeter':
+            result = self.entryFrom / 3280.8398950131
+        elif self.listBoxTo == 'Mile':
+            result = self.entryFrom / 5280
         return result
 
     def units(self):
@@ -74,3 +93,5 @@ class Commands:
             return self.__centimeter()
         elif self.listBoxFrom == 'Inch':
             return self.__inch()
+        elif self.listBoxFrom == 'Feet':
+            return self.__feet()

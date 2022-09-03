@@ -1,5 +1,17 @@
 from tkinter import *
 from tkinter.font import *
+from Commands import *
+
+
+def calculate_unit():
+    entry_from = int(entryFrom.get())
+    list_box_from = listBoxFrom.get(ACTIVE)
+    list_box_to = listBoxTo.get(ACTIVE)
+
+    my_commands = Commands(entry_from, list_box_from, list_box_to)
+    my_commands.units()
+    entryResult.delete(0, END)
+    entryResult.insert(END, my_commands.units())
 
 
 window = Tk()
@@ -33,17 +45,18 @@ entryFrom.grid(column=0, row=1, padx=10, pady=10, sticky=E+W)
 entryResult = Entry(window, font=myFontEntry, background=entryBackground, foreground=entryTextColor)
 entryResult.grid(column=1, row=1, padx=10, pady=10, sticky=E+W)
 
-# make listbox, config it and isert item
+# make listbox, config it and insert item
 listBoxFrom = Listbox(window, exportselection=False, font=myFontListBox)
 listBoxFrom.config(background=entryBackground, foreground=textColor)
 listBoxFrom.grid(column=0, row=2, padx=10, pady=10, sticky=E+W)
 listBoxFrom.insert(END, 'MilliMeter')
 listBoxFrom.insert(END, 'CentiMeter')
 listBoxFrom.insert(END, 'Inch')
-listBoxFrom.insert(END, 'KiloMeter')
 listBoxFrom.insert(END, 'Feet')
 listBoxFrom.insert(END, 'Yard')
-listBoxFrom.insert(END, 'Miles')
+listBoxFrom.insert(END, 'Meter')
+listBoxFrom.insert(END, 'KiloMeter')
+listBoxFrom.insert(END, 'Mile')
 
 listBoxTo = Listbox(window, exportselection=False, font=myFontListBox)
 listBoxTo.config(background=entryBackground, foreground=textColor)
@@ -51,13 +64,16 @@ listBoxTo.grid(column=1, row=2, padx=10, pady=10, sticky=E+W)
 listBoxTo.insert(END, 'MilliMeter')
 listBoxTo.insert(END, 'CentiMeter')
 listBoxTo.insert(END, 'Inch')
-listBoxTo.insert(END, 'KiloMeter')
 listBoxTo.insert(END, 'Feet')
 listBoxTo.insert(END, 'Yard')
-listBoxTo.insert(END, 'Miles')
+listBoxTo.insert(END, 'Meter')
+listBoxTo.insert(END, 'KiloMeter')
+listBoxTo.insert(END, 'Mile')
+
 
 # make calculate button and config it
-calculateButton = Button(window, text='Calculate', font=myFontButton, fg=textColor, bg=entryBackground)
+calculateButton = Button(window, text='Calculate', font=myFontButton)
+calculateButton.config(fg=textColor, bg=entryBackground, command=calculate_unit)
 calculateButton.grid(column=0, row=3, columnspan=2, padx=10, pady=10, sticky=E+W)
 
 window.mainloop()

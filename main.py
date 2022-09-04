@@ -70,7 +70,6 @@ listBoxTo.insert(END, 'Meter')
 listBoxTo.insert(END, 'KiloMeter')
 listBoxTo.insert(END, 'Mile')
 
-
 # make calculate button and config it
 calculateButton = Button(window, text='Calculate', font=myFontButton)
 calculateButton.config(fg=textColor, bg=entryBackground, command=calculate_unit)
